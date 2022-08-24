@@ -1,0 +1,540 @@
+NAME-UDIT KHANDELWAL							ASSIGNMENT-21 STRUCTURE
+
+
+1. Define a structure Employee with member variables id, name, salary.
+
+#include<stdio.h>
+#include<conio.h>
+struct emp
+{
+    int id;
+    char name[50];
+    float sal;
+};
+int main()
+{
+    struct emp e1={100,"udit khandelwal",50000.00};
+    getch();
+}
+
+
+2. Write a function to take input employee data from the user. [ Refer structure from
+question 1 ]
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+struct emp
+{
+    int id;
+    char name[50];
+    float sal;
+};
+
+struct emp input()
+{
+    struct emp e;
+    printf("enter employee id:");
+    scanf("%d",&e.id);
+    fflush(stdin);
+    printf("enter name of employee:");
+    fgets(e.name,50,stdin);
+    e.name[strlen(e.name)-1]='\0';
+    printf("enter salary of employee:");
+    scanf("%f",&e.sal);
+    return e;
+}
+int main()
+{
+    struct emp e1;
+    e1=input(); 
+    getch();
+}
+
+
+3. Write a function to display employee data. [ Refer structure from question 1 ]
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+struct emp
+{
+    int id;
+    char name[50];
+    float sal;
+};
+
+struct emp input()
+{
+    struct emp e;
+    printf("enter employee id:");
+    scanf("%d",&e.id);
+    fflush(stdin);
+    printf("enter name of employee:");
+    fgets(e.name,50,stdin);
+    e.name[strlen(e.name)-1]='\0';
+    printf("enter salary of employee:");
+    scanf("%f",&e.sal);
+    return e;
+}
+
+void display(struct emp e)
+{
+    printf("employee id is: %d\n",e.id);
+    printf("employee name is: %s\n",e.name);
+    printf("employee salary is: %f\n",e.sal);
+}
+int main()
+{
+    struct emp e1;
+    e1=input();
+    display(e1);
+    getch();
+}
+
+
+4. Write a function to find the highest salary employee from a given array of 10
+employees. [ Refer structure from question 1]
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+struct emp
+{
+    int id;
+    char name[50];
+    float sal;
+};
+
+struct emp input()
+{
+    struct emp e;
+    printf("enter employee id:");
+    scanf("%d",&e.id);
+    fflush(stdin);
+    printf("enter name of employee:");
+    fgets(e.name,50,stdin);
+    e.name[strlen(e.name)-1]='\0';
+    printf("enter salary of employee:");
+    scanf("%f",&e.sal);
+    return e;
+}
+
+void display(struct emp e)
+{
+    printf("employee id is: %d\n",e.id);
+    printf("employee name is: %s\n",e.name);
+    printf("employee salary is: %f\n",e.sal);
+}
+
+void max_sal(struct emp e[],int size)
+{
+    int i,j=0;
+    float max=e[0].sal;
+    for(i=1;i<size;i++)
+    {
+        if(e[i].sal>max)
+        {
+            max=e[i].sal;
+            j=i;
+        }
+    }
+    printf("maximum salary employee is:\n");
+    display(e[j]);
+}
+int main()
+{
+    struct emp e[10];
+    int i=0;
+    while(i<10)
+    {
+        e[i]=input();
+        i++;
+    }
+    max_sal(e,10);
+    getch();
+}
+
+
+5. Write a function to sort employees according to their salaries [ refer structure from
+question 1]
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+struct emp
+{
+    int id;
+    char name[50];
+    float sal;
+};
+
+struct emp input()
+{
+    struct emp e;
+    printf("enter employee id:");
+    scanf("%d",&e.id);
+    fflush(stdin);
+    printf("enter name of employee:");
+    fgets(e.name,50,stdin);
+    e.name[strlen(e.name)-1]='\0';
+    printf("enter salary of employee:");
+    scanf("%f",&e.sal);
+    return e;
+}
+
+void display(struct emp e)
+{
+    printf("employee id is: %d\n",e.id);
+    printf("employee name is: %s\n",e.name);
+    printf("employee salary is: %f\n",e.sal);
+}
+
+void sort_sal(struct emp e[],int size)
+{
+    int i,j,min;
+    struct emp min_sal;
+    for(i=0;i<size-1;i++)
+    {
+        min=i;
+        for(j=i+1;j<size;j++)
+        {
+            if(e[min].sal>e[j].sal)
+                min=j;
+        }
+        if(i!=min)
+        {
+            min_sal=e[i];
+            e[i]=e[min];
+            e[min]=min_sal;
+        }
+    }
+}
+int main()
+{
+    struct emp e[10];
+    int i=0;
+    while(i<10)
+    {
+        e[i]=input();
+        i++;
+    }
+    sort_sal(e,10);
+    i=0;
+    while(i<10)
+    {
+        display(e[i]);
+        i++;
+    }
+    getch();
+}
+
+
+6. Write a function to sort employees according to their names [refer structure from
+question 1]
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+struct emp
+{
+    int id;
+    char name[50];
+    float sal;
+};
+
+struct emp input()
+{
+    struct emp e;
+    printf("enter employee id:");
+    scanf("%d",&e.id);
+    fflush(stdin);
+    printf("enter name of employee:");
+    fgets(e.name,50,stdin);
+    e.name[strlen(e.name)-1]='\0';
+    printf("enter salary of employee:");
+    scanf("%f",&e.sal);
+    return e;
+}
+
+void display(struct emp e)
+{
+    printf("employee id is: %d\n",e.id);
+    printf("employee name is: %s\n",e.name);
+    printf("employee salary is: %f\n",e.sal);
+}
+
+void sort_name(struct emp e[],int size)
+{
+    int i,j,min;
+    struct emp min_name;
+    for(i=0;i<size-1;i++)
+    {
+        min=i;
+        for(j=i+1;j<size;j++)
+        {
+            if(strcmp(e[min].name,e[j].name)>0)
+                min=j;
+        }
+        if(i!=min)
+        {
+            min_name=e[i];
+            e[i]=e[min];
+            e[min]=min_name;
+        }
+    }
+}
+int main()
+{
+    struct emp e[10];
+    int i=0;
+    while(i<10)
+    {
+        e[i]=input();
+        i++;
+    }
+    sort_name(e,10);
+    i=0;
+    while(i<10)
+    {
+        display(e[i]);
+        i++;
+    }
+    getch();
+}
+
+
+7. Write a program to calculate the difference between two time periods.
+
+#include<stdio.h>
+#include<conio.h>
+
+struct time
+{
+    int sec;
+    int min;
+    int hour;
+};
+
+struct time input()
+{
+    struct time t;
+    printf("enter seconds:");
+    scanf("%d",&t.sec);
+    printf("enter minutes:");
+    scanf("%d",&t.min);
+    printf("enter hours:");
+    scanf("%d",&t.hour);
+    return t;
+}
+
+void display(struct time t)
+{
+    printf("hours:minutes:seconds: %d:%d:%d\n",t.hour,t.min,t.sec);
+}
+
+int time_diff(struct time t1,struct time t2,struct time *td)
+{
+    if(t2.sec>t1.sec)
+    {
+        t1.min--;
+        t1.sec+=60;
+    }
+    (*td).sec=t1.sec-t2.sec;
+    if(t2.min>t1.min)
+    {
+        t1.hour--;
+        t1.min+=60;
+    }
+    (*td).min=t1.min-t2.min;
+    if(t2.hour>t1.hour)
+        (*td).hour=t2.hour-t1.hour;
+    else
+        (*td).hour=t1.hour-t2.hour;
+}
+
+int main()
+{
+    struct time t1,t2,t_diff;
+    t1=input();
+    display(t1);
+    t2=input();
+    display(t2);
+    time_diff(t1,t2,&t_diff);
+    printf("difference between time is:\n");
+    display(t_diff);
+    getch();
+}
+
+
+8. Write a program to store information of 10 students and display them using structure.
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+struct student
+{
+    int roll_num;
+    char name[50];
+    int standard;
+};
+
+struct student input()
+{
+    struct student st;
+    printf("enter class:");
+    scanf("%d",&st.standard);
+    fflush(stdin);
+    printf("enter name:");
+    fgets(st.name,50,stdin);
+    st.name[strlen(st.name)-1]='\0';
+    printf("enter roll number:");
+    scanf("%d",&st.roll_num);
+    return st;
+}
+
+void display(struct student st)
+{
+    printf("class:%d\n",st.standard);
+    printf("name:%s\n",st.name);
+    printf("roll number:%d\n",st.roll_num);
+}
+
+int main()
+{
+    struct student st[10];
+    int i;
+    for(i=0;i<10;i++)
+        st[i]=input();
+    for(i=0;i<10;i++)
+        display(st[i]);
+    getch();
+}
+
+
+9. Write a program to store information of n students and display them using structure
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+struct student
+{
+    int roll_num;
+    char name[50];
+    int standard;
+};
+
+struct student input()
+{
+    struct student st;
+    printf("enter class:");
+    scanf("%d",&st.standard);
+    fflush(stdin);
+    printf("enter name:");
+    fgets(st.name,50,stdin);
+    st.name[strlen(st.name)-1]='\0';
+    printf("enter roll number:");
+    scanf("%d",&st.roll_num);
+    return st;
+}
+
+void display(struct student st)
+{
+    printf("class:%d\n",st.standard);
+    printf("name:%s\n",st.name);
+    printf("roll number:%d\n",st.roll_num);
+}
+
+int main()
+{
+    int i,n;
+    printf("enter number of students:");
+    scanf("%d",&n);
+    struct student st[n];
+    for(i=0;i<n;i++)
+        st[i]=input();
+    for(i=0;i<n;i++)
+        display(st[i]);
+    getch();
+}
+
+
+10. Write a program to enter the marks of 5 students in Chemistry, Mathematics and
+Physics (each out of 100) using a structure named Marks having elements roll no.,
+name, chem_marks, maths_marks and phy_marks and then display the percentage
+of each student.
+
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+struct student
+{
+    int roll_num;
+    char name[50];
+    float chem_marks;
+    float phy_marks;
+    float maths_marks;
+};
+
+struct student input()
+{
+    struct student st;
+    printf("enter name:");
+    fgets(st.name,50,stdin);
+    st.name[strlen(st.name)-1]='\0';
+    printf("enter roll number:");
+    scanf("%d",&st.roll_num);
+    printf("enter marks of chemistry:");
+    scanf("%f",&st.chem_marks);
+    printf("enter marks of physics:");
+    scanf("%f",&st.phy_marks);
+    printf("enter marks of mathematics:");
+    scanf("%f",&st.maths_marks);
+    fflush(stdin);
+    return st;
+}
+
+void display(struct student st)
+{
+    printf("name:%s\n",st.name);
+    printf("roll number:%d\n",st.roll_num);
+    printf("marks of chemistry: %f\n",st.chem_marks);
+    printf("marks of physics: %f\n",st.phy_marks);
+    printf("marks of mathematics: %f\n",st.maths_marks);
+}
+
+void percentage(struct student st[],int size,float *p)
+{
+    int i;
+    for(i=0;i<size;i++)
+    {
+        p[i]=(st[i].chem_marks+st[i].phy_marks+st[i].maths_marks)/3.0;
+    }
+}
+int main()
+{
+    int i;
+    struct student st[5];
+    float percent[5];
+    for(i=0;i<5;i++)
+        st[i]=input();
+    for(i=0;i<5;i++)
+        display(st[i]);
+    percentage(st,5,percent);
+    for(i=0;i<5;i++)
+        printf("%s has percentage %f%%\n",st[i].name,percent[i]);
+    getch();
+}
+
+
+
+
